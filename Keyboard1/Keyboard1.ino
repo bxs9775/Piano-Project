@@ -28,21 +28,21 @@ int sunshineDur[] = {
 CapacitiveSensor   cs_10_8 = CapacitiveSensor(12,13); 
 */
 
-int noteDuration = 1000/4;
+int noteDuration = 1000/2;
 
 float notes[] = { 
-  NOTE_B3,NOTE_C3,NOTE_D3
+  NOTE_A3,NOTE_B3,NOTE_C3,NOTE_D3
 };
 
 CapacitiveSensor sensors[] = {
-  CapacitiveSensor(12,13),CapacitiveSensor(10,11),CapacitiveSensor(8,9)
+  CapacitiveSensor(12,13),CapacitiveSensor(10,11),CapacitiveSensor(8,9),CapacitiveSensor(6,7)
 };
 
 bool pressedCurr[] = {
-  false,false,false
+  false,false,false,false
 };
 bool pressedLast[] = {
-  false,false,false
+  false,false,false,false
 };
 
 void setup() {
@@ -54,7 +54,7 @@ void setup() {
 void loop() {
   bool notePlayed = false;
   int i = 0;
-  int count = 3;
+  int count = 4;
   Serial.print("Count: ");
   Serial.println(count);
   
