@@ -54,7 +54,10 @@ void setup() {
 void loop() {
   bool notePlayed = false;
   int i = 0;
-  int count = sizeof(sensors);
+  int count = 3;
+  Serial.print("Count: ");
+  Serial.println(count);
+  
   while(!notePlayed && i < count){
     pressedLast[i] = pressedCurr[i];
     
@@ -72,9 +75,14 @@ void loop() {
       playNote(i);
       notePlayed = true;
     }
-
+  /*
     int k = map(total, 0, 20000, 0, 255);
     analogWrite(ledPin, k);
+    */
+    i++;
+  }
+  if(!notePlayed){
+    delay(noteDuration);
   }
 }
 
