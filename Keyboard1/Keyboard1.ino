@@ -6,27 +6,6 @@
 
 #define outpin 3   // audio out to speaker or amp
 int ledPin = 0;
-int thisNote = 0;
-float R = 0; //rest
-
-/*
-// make sure this array and the following one have same number of entries,
-// 43. bottom array is time values
-float sunshine[] =  {    
-NOTE_C3, NOTE_F3, NOTE_G3, NOTE_A3, NOTE_A3, R, NOTE_A3, NOTE_G3,NOTE_A3, NOTE_F3, NOTE_F3, R,
-NOTE_F3, NOTE_G3, NOTE_A3, NOTE_AS3, NOTE_D4, R, NOTE_D4, NOTE_C4, NOTE_AS3, NOTE_A3, R, 
-NOTE_F3, NOTE_G3, NOTE_A3, NOTE_AS3, NOTE_D4, R, NOTE_D4, NOTE_C4, NOTE_AS3, NOTE_A3, NOTE_F3, R,
-NOTE_F3, NOTE_G3, NOTE_A3, NOTE_AS3, NOTE_G3, NOTE_G3, NOTE_A3, NOTE_F3};
-int sunshineDur[] = {
-4, 4, 4, 2, 2, 4, 4, 4, 4, 2, 2, 4,
-4, 4, 4, 2, 2, 4, 4, 4, 4, 1, 4, 
-4, 4, 4, 2, 2, 4, 4, 4, 4, 2, 2, 4,
-4, 4, 2.5, 4, 4, 2, 4, 1.25};
-
-// 10M resistor between pins 3 & 2, pin 2 is sensor pin,
-// add a wire and or foil if desired
-CapacitiveSensor   cs_10_8 = CapacitiveSensor(12,13); 
-*/
 
 int noteDuration = 1000/2;
 
@@ -75,34 +54,12 @@ void loop() {
       playNote(i);
       notePlayed = true;
     }
-  /*
-    int k = map(total, 0, 20000, 0, 255);
-    analogWrite(ledPin, k);
-    */
     i++;
   }
   if(!notePlayed){
     delay(noteDuration);
   }
 }
-
-/*
- // iterate over the notes of the melody
-void playMelody() { 
-    // to calculate the note duration, take one second 
-    // divided by the note type.
-    //e.g. quarter note = 1000 / 4, eighth note = 1000/8, etc.
-    int noteDuration = 1000/sunshineDur[thisNote];
-    tone(outpin, sunshine[thisNote],noteDuration);
-
-    delay(noteDuration);
-    // stop the tone playing:
-    noTone(outpin);
-    
-    thisNote = ++thisNote % 43; //prep next note
-
-}
-*/
 
 //plays the note at the given index
 void playNote(int index){
